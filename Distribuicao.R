@@ -1,4 +1,4 @@
-#An·lise da distribuiÁ„o de processos do STF
+#An√°lise da distribui√ß√£o de processos do STF
 #Por Juliana Marques
 
 ##### pacotes
@@ -26,7 +26,7 @@ arquivo_complemento <- read.csv("processos.csv")
 arquivo <- read.csv("lista-processos.csv")
 
 ##### arquivo_complemento
-# arrumar codificaÁ„o de caracteres
+# arrumar codifica√ß√£o de caracteres
 
 arquivo_complemento$classe_processo <- as.character(arquivo_complemento$classe_processo)
 Encoding(arquivo_complemento$classe_processo) <- "UTF-8"
@@ -73,7 +73,7 @@ arquivo_complemento<-data.frame(arquivo_complemento$id_proc,arquivo_complemento$
 names(arquivo_complemento)<-c("id_proc","origem_detalhe","origem_ata","procedencia_ata")
 
 ##### arquivo
-# arrumar codificaÁ„o de caracteres
+# arrumar codifica√ß√£o de caracteres
 
 arquivo$relator <- as.character(arquivo$relator)
 Encoding(arquivo$relator) <- "UTF-8"
@@ -131,7 +131,7 @@ max(as.Date(distribuicao[,"data"]))
 
 #434.887
 
-vagas<-data.frame(c("C·rmen L˙cia","Celso De Mello","Marco AurÈlio","Eros Grau","Luiz Fux","Gilmar Mendes","Ayres Britto","Roberto Barroso","Ricardo Lewandowski","Dias Toffoli","Menezes Direito","Sep˙lveda Pertence","Edson Fachin","Joaquim Barbosa","Alexandre De Moraes","Cezar Peluso","Teori Zavascki","Ellen Gracie","Rosa Weber"),c("V2","V3","V4","V7","V7","V12","V13","V13","V16","V17","V17","V17","V18","V18","V19","V19","V19","V20","V20"))
+vagas<-data.frame(c("C√°rmen L√∫cia","Celso De Mello","Marco Aur√©lio","Eros Grau","Luiz Fux","Gilmar Mendes","Ayres Britto","Roberto Barroso","Ricardo Lewandowski","Dias Toffoli","Menezes Direito","Sep√∫lveda Pertence","Edson Fachin","Joaquim Barbosa","Alexandre De Moraes","Cezar Peluso","Teori Zavascki","Ellen Gracie","Rosa Weber"),c("V2","V3","V4","V7","V7","V12","V13","V13","V16","V17","V17","V17","V18","V18","V19","V19","V19","V20","V20"))
 
 names(vagas)<-c("relator","vaga")
 
@@ -143,7 +143,7 @@ distribuicao <- merge(distribuicao, vagas, by ="relator",all.x=TRUE)
 
 distribuicao_total<-distribuicao
 
-write.csv2(distribuicao_total,"C:/Users/Juliana/Desktop/Atual/STF/monocr·tica/distribuicao_total.csv")
+write.csv2(distribuicao_total,"C:/Users/Juliana/Desktop/Atual/STF/monocr√°tica/distribuicao_total.csv")
 
 
 #####elimina origem internacional e relatores nulos
@@ -174,8 +174,8 @@ distribuicao<- subset(distribuicao, !grepl("Kor ",distribuicao$origem_detalhe)==
 distribuicao<- subset(distribuicao, !grepl("Ita ",distribuicao$origem_detalhe)==TRUE)
 distribuicao<- subset(distribuicao, !grepl("",distribuicao$origem_detalhe)==FALSE)
 distribuicao<- subset(distribuicao, !grepl("-",distribuicao$origem_detalhe)==FALSE)
-distribuicao<- subset(distribuicao, !grepl("HelvÈtica",distribuicao$origem_detalhe)==TRUE)
-distribuicao<- subset(distribuicao, !grepl("N„o Informada",distribuicao$origem_detalhe)==TRUE)
+distribuicao<- subset(distribuicao, !grepl("Helv√©tica",distribuicao$origem_detalhe)==TRUE)
+distribuicao<- subset(distribuicao, !grepl("N√£o Informada",distribuicao$origem_detalhe)==TRUE)
 distribuicao<- subset(distribuicao, !grepl("Ministra Presidente",distribuicao$relator)==TRUE)
 distribuicao<- subset(distribuicao, !grepl("Ministro Presidente",distribuicao$relator)==TRUE)
 distribuicao<- subset(distribuicao, !grepl("",distribuicao$vaga)==FALSE)
@@ -209,7 +209,7 @@ names(relator) <- c("vaga", "total_processo")
 relator <- merge(relator, tmp, by = "vaga")
 relator$normalizado <- relator$total_processo/relator$tempo_stf
 
-##### ajuste disposiÁ„o (3)
+##### ajuste disposi√ß√£o (3)
 
 proc_relator <- data.frame(table(distribuicao$vaga,distribuicao$origem_detalhe))
 proc_relator<-subset(proc_relator,Freq>0)
@@ -218,7 +218,7 @@ origem_detalhe<-reshape(proc_relator, v.names = "QTD", idvar = "vaga", timevar="
 
 
 
-##### origem_detalhe (Agrupamento das semelhanÁas/diferenÁas entre os objetos de um conjunto de dados) - K-Means (4)
+##### origem_detalhe (Agrupamento das semelhan√ßas/diferen√ßas entre os objetos de um conjunto de dados) - K-Means (4)
 
 analise1 <- merge(origem_detalhe,relator, by = "vaga")
 relatores=analise1[,2:30]
@@ -258,7 +258,7 @@ saida_k_means$withinss
 
 
 
-#####analisar para prÛximos 6 passos anterior com filtros de data_de_distribuicaos distintos
+#####analisar para pr√≥ximos 6 passos anterior com filtros de data_de_distribuicaos distintos
 #distribuicao_filtro <-subset(distribuicao,ano==2010)
 #distribuicao_filtro <-subset(distribuicao,ano==2011) 
 #distribuicao_filtro <-subset(distribuicao,ano==2012) 
@@ -311,7 +311,7 @@ names(relator) <- c("vaga", "total_processo")
 relator <- merge(relator, tmp, by = "vaga")
 relator$normalizado <- relator$total_processo/relator$tempo_stf
 
-##### ajuste disposiÁ„o (3)
+##### ajuste disposi√ß√£o (3)
 
 proc_relator <- data.frame(table(distribuicao$vaga,distribuicao$origem))
 names(proc_relator)<-c("vaga","origem","QTD")
@@ -319,7 +319,7 @@ origem<-reshape(proc_relator, v.names = "QTD", idvar = "vaga", timevar="origem",
 
 
 
-##### origem_detalhe (Agrupamento das semelhanÁas/diferenÁas entre os objetos de um conjunto de dados) - K-Means (4)
+##### origem_detalhe (Agrupamento das semelhan√ßas/diferen√ßas entre os objetos de um conjunto de dados) - K-Means (4)
 
 analise1 <- merge(origem,relator, by = "vaga")
 relatores=analise1[,2:30]
@@ -367,7 +367,7 @@ names(check)<-c("ano","vaga","origem","qtd_processo")
 
 write.csv2(check,"resumo_origemvsproc.csv")
 
-#####analisar para prÛximos 6 passos anterior com filtros de data_de_distribuicaos distintos
+#####analisar para pr√≥ximos 6 passos anterior com filtros de data_de_distribuicaos distintos
 #filter(`as.Date(data)` > "2016-12-31" & `as.Date(data)` <"2018-01-01")
 #filter(`as.Date(data)` > "2017-12-31")
 
@@ -403,7 +403,7 @@ names(relator) <- c("vaga", "total_processo")
 relator <- merge(relator, tmp, by = "vaga")
 relator$normalizado <- relator$total_processo/relator$tempo_stf
 
-##### ajuste disposiÁ„o (3)
+##### ajuste disposi√ß√£o (3)
 
 proc_relator <- data.frame(table(distribuicao$vaga,distribuicao$origemvsclasse))
 names(proc_relator)<-c("vaga","origemvsclasse","QTD")
@@ -411,7 +411,7 @@ origemvsclasse<-reshape(proc_relator, v.names = "QTD", idvar = "vaga", timevar="
 
 
 
-##### origem_detalhe (Agrupamento das semelhanÁas/diferenÁas entre os objetos de um conjunto de dados) - K-Means (4)
+##### origem_detalhe (Agrupamento das semelhan√ßas/diferen√ßas entre os objetos de um conjunto de dados) - K-Means (4)
 
 analise1 <- merge(origemvsclasse,relator, by = "vaga")
 relatores=analise1[,2:30]
@@ -451,7 +451,7 @@ saida_k_means$withinss
 
 
 
-#####analisar para prÛximos 6 passos anterior com filtros de anos distintos
+#####analisar para pr√≥ximos 6 passos anterior com filtros de anos distintos
 #distribuicao_filtro <-subset(distribuicao,ano==2010)
 #distribuicao_filtro <-subset(distribuicao,ano==2011) 
 #distribuicao_filtro <-subset(distribuicao,ano==2012) 
@@ -470,3 +470,4 @@ names(check)<-c("ano","vaga","origemvsclasse","qtd_processo")
 
 write.csv2(check,"resumo_estado_ano.csv")
 
+# Planilha com resultados: https://drive.google.com/file/d/1fo2BSagiMKJ6EERMEdo_cbCd64e8HcrM/view
