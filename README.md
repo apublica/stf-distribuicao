@@ -4,5 +4,7 @@ Os arquivos fazem uma análise estatística da distribuição de processos do ST
 
 ## Equipe
 Reportagem: Adriano Belisário
+
 Análise estatística: Juliana Marques (Datalabe)
+
 Extração dos Dados: Álvaro Justen (Brasil.io)
