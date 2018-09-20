@@ -8,9 +8,7 @@ library(stringi)
 library(readxl)
 library("dplyr")
 
-#### Pacotes
-rm(list=ls())
-setwd("C:/Users/Juliana/Desktop/Atual/STF")
+#### Pacotes#
 arquivo <- read.csv("processo-andamento-2017-12-04.csv")
 
 ### Arrumar codificação de caracteres
@@ -69,26 +67,11 @@ names(arquivo_unique)<-c("id_proc","relator")
 =====================
 
 ###bases monocraticas
-
-ano2010 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2010.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2011 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2011.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2012 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2012.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2013 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2013.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2014 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2014.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2015 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2015.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2016 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2016.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-ano2017 <- read_excel("monocrática/anual/decisoes_monocraticas_lista_2017.xlsx",col_names = FALSE, col_types = c("text","numeric", "text", "numeric", "date","text", "numeric", "text", "text","text", "date", "text", "text", "text"))
-
-
-
-mono <- rbind(ano2010,ano2011,ano2012,ano2013,ano2014,ano2015,ano2016,ano2017)
+anos <- 2017:2018
+url <- "http://www.stf.jus.br/arquivo/cms/publicacaoBOInternet/anexo/decisoes/monocraticas/"
+lapply(paste0(url,"decisoes_monocraticas_lista_", anos,".xlsx"), function(x) download.file(x, basename(x)))
+baixados <- list.files(pattern = '.xlsx') # cria lista dos arquivos baixados
+mono <- do.call("rbind",lapply(baixados,FUN=function(files){read_excel(files,skip=5)})) #importa
 
 
 mono$X__4 <- NULL

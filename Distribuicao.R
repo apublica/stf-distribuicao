@@ -1,4 +1,5 @@
-setwd("C:/Users/Juliana/Desktop/Atual/STF/Extração3")
+#Análise da distribuição de processos do STF
+#Por Juliana Marques
 
 ##### pacotes
 
@@ -273,7 +274,7 @@ check<-data.frame(table(distribuicao$ano,distribuicao$vaga,distribuicao$origem_d
 
 names(check)<-c("ano","vaga","estado","qtd_processo")
 
-write.csv2(check,"C:/Users/Juliana/Desktop/Atual/STF/monocrática/resumo_estado_ano.csv")
+write.csv2(check,"resumo_estado_ano.csv")
 
 ==============================================
 
@@ -364,7 +365,7 @@ saida_k_means$withinss
 check<-data.frame(table(distribuicao$ano,distribuicao$vaga,distribuicao$origem))
 names(check)<-c("ano","vaga","origem","qtd_processo")
 
-write.csv2(check,"C:/Users/Juliana/Desktop/Atual/STF/monocrática/resumo_origemvsproc.csv")
+write.csv2(check,"resumo_origemvsproc.csv")
 
 #####analisar para próximos 6 passos anterior com filtros de data_de_distribuicaos distintos
 #filter(`as.Date(data)` > "2016-12-31" & `as.Date(data)` <"2018-01-01")
@@ -467,5 +468,5 @@ check<-data.frame(table(distribuicao$ano,distribuicao$vaga,distribuicao$origemvs
 
 names(check)<-c("ano","vaga","origemvsclasse","qtd_processo")
 
-write.csv2(check,"C:/Users/Juliana/Desktop/Atual/STF/monocrática/resumo_estado_ano.csv")
+write.csv2(check,"resumo_estado_ano.csv")
 
