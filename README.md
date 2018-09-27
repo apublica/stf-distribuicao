@@ -7,4 +7,4 @@ Reportagem: Adriano Belisário
 
 Análise estatística: Juliana Marques (Datalabe)
 
-Extração dos Dados: Álvaro Justen (Brasil.io)
+Extração dos Dados: Álvaro Justen (Brasil.io) - (script da extração de dados)[https://github.com/turicas/processos-stf]
